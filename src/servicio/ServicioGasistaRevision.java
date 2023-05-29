@@ -2,13 +2,16 @@ package servicio;
 
 import java.util.Date;
 
+import persona.Cliente;
+import persona.Especialista;
+
 public class ServicioGasistaRevision extends ServicioGasista {
-	
+
 	private double costoRevision;
 
-	public ServicioGasistaRevision(String tipoServicio, int dniCliente, int numEspecialista, Date horaInicio,
-			Date horaFinal, String domicilio, double importeTotal, int cantArtefactos) {
-		super(tipoServicio, dniCliente, numEspecialista, horaInicio, horaFinal, domicilio, importeTotal, cantArtefactos);
+	public ServicioGasistaRevision(String tipoServicio, Cliente cliente, Especialista especialista, Date horaInicio,
+			String domicilio, int cantArtefactos) {
+		super(tipoServicio, cliente, especialista, horaInicio, horaInicio, domicilio, cantArtefactos, cantArtefactos);
 		costoRevision = 0;
 	}
 

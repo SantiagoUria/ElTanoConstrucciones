@@ -2,14 +2,16 @@ package servicio;
 
 import java.util.Date;
 
+import persona.Cliente;
+import persona.Especialista;
+
 public class ServicioPinturaEnAltura extends ServicioPintura{
 	private double alquilerAndamios;
 	private double costoSeguro;
 	private int altura;
 
-	public ServicioPinturaEnAltura(String tipoServicio, int dniCliente, int numEspecialista, Date horaInicio,
-			Date horaFinal, String domicilio, double importeTotal, int mtrsCuadrados, int altura) {
-		super(tipoServicio, dniCliente, numEspecialista, horaInicio, domicilio, mtrsCuadrados);
+	public ServicioPinturaEnAltura(String tipoServicio, Cliente cliente, Especialista especialista, Date horaInicio, String domicilio, int mtrsCuadrados, int altura) {
+		super(tipoServicio, cliente, especialista, horaInicio, domicilio, mtrsCuadrados);
 		alquilerAndamios = 0;
 		costoSeguro = 0;
 		this.altura = altura;

@@ -6,7 +6,11 @@ import java.util.HashMap;
 import persona.Cliente;
 import persona.Especialista;
 import servicio.RegistroServicio;
+import servicio.ServicioElectricista;
+import servicio.ServicioGasistaReparacion;
+import servicio.ServicioGasistaRevision;
 import servicio.ServicioPintura;
+import servicio.ServicioPinturaEnAltura;
 
 public class ElTanoConstrucciones {
 	private HashMap<Integer, Especialista> registroEspecialistas;
@@ -23,34 +27,53 @@ public class ElTanoConstrucciones {
 		Especialista nuevoEspecialista = new Especialista(nombre, telefono, numEspecialista, especialidad);
 		registroEspecialistas.put(nuevoEspecialista.consultarNumEspecialista(), nuevoEspecialista);
 	}
+	public void agregarEspecialista(Especialista especialista) {
+		registroEspecialistas.put(especialista.consultarNumEspecialista(), especialista);
+	}
 
 	public void agregarCliente(String nombre, int telefono, int dni, String domicilio) {
 		Cliente nuevoCliente = new Cliente(nombre, telefono, dni, domicilio);
 		registroClientes.put(nuevoCliente.consultarDNI(), nuevoCliente);
-
+	}
+	
+	public void agregarCliente(Cliente cliente) {
+		registroClientes.put(cliente.consultarDNI(), cliente);
 	}
 
-	public void solicitarServicioPintura(int dniCliente, int numEspecialista, Date horaInicio, String domicilio,
+	public void solicitarServicioPintura(Cliente cliente, Especialista especialista, Date horaInicio, String domicilio,
 			int mtrsCuadrados) {
 
-		ServicioPintura servicio = new ServicioPintura("Pintura", dniCliente, numEspecialista, horaInicio, domicilio,
+		ServicioPintura servicio = new ServicioPintura("Pintura", cliente, especialista, horaInicio, domicilio,
 				mtrsCuadrados);
-		registroServicios.put(servicio.consultarDniCliente(), servicio);
+		registroServicios.put(cliente.consultarDNI(), servicio);
 	}
 
-	public void solicitarServicioPinturaEnAltura() {
-
+	public void solicitarServicioPinturaEnAltura(Cliente cliente, Especialista especialista, Date horaInicio,
+			String domicilio, int mtrsCuadrados, int altura) {
+		ServicioPinturaEnAltura servicio = new ServicioPinturaEnAltura("PinturaEnAltura", cliente, especialista,
+				horaInicio, domicilio, mtrsCuadrados, altura);
+		registroServicios.put(cliente.consultarDNI(), servicio);
 	}
 
-	public void solicitarServicioElectricista() {
-
+	public void solicitarServicioElectricista(String tipoServicio, Cliente cliente, Especialista especialista,
+			Date horaInicio, String domicilio, double importeTotal, int cantHoras) {
+		ServicioElectricista servicio = new ServicioElectricista("Electricidad", cliente, especialista, horaInicio,
+				domicilio, cantHoras);
+		registroServicios.put(cliente.consultarDNI(), servicio);
 	}
 
-	public void solicitarServicioGasistaRevision() {
-
+	public void solicitarServicioGasistaRevision(String tipoServicio, Cliente cliente, Especialista especialista,
+			Date horaInicio, String domicilio, int cantArtefactos) {
+		ServicioGasistaRevision servicio = new ServicioGasistaRevision("GasistaRevision", cliente, especialista,
+				horaInicio, domicilio, cantArtefactos);
+		registroServicios.put(cliente.consultarDNI(), servicio);
 	}
 
-	public void solicitarServicioGasistaReparacion() {
+	public void solicitarServicioGasistaReparacion(String tipoServicio, Cliente cliente, Especialista especialista,
+			Date horaInicio, String domicilio, int cantArtefactos) {
+		ServicioGasistaReparacion servicio = new ServicioGasistaReparacion("GasistaRevision", cliente, especialista,
+				horaInicio, domicilio, cantArtefactos);
+		registroServicios.put(cliente.consultarDNI(), servicio);
 
 	}
 

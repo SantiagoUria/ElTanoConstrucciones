@@ -2,21 +2,24 @@ package servicio;
 
 import java.util.Date;
 
+import persona.Cliente;
+import persona.Especialista;
+
 public abstract class RegistroServicio {
 
 	private String tipoServicio;
-	private int dniCliente;
-	private int numEspecialista;
+	private Cliente cliente;
+	private Especialista especialista;
 	private Date horaInicio;
 	private Date horaFinal;
 	private String domicilio;
 	private double importeTotal;
 
-	public RegistroServicio(String tipoServicio, int dniCliente, int numEspecialista, Date horaInicio,
+	public RegistroServicio(String tipoServicio, Cliente cliente, Especialista especialista, Date horaInicio,
 			String domicilio) {
 		this.tipoServicio = tipoServicio;
-		this.dniCliente = dniCliente;
-		this.numEspecialista = numEspecialista;
+		this.cliente = cliente;
+		this.especialista = especialista;
 		this.horaInicio = horaInicio;
 		this.domicilio = domicilio;
 	}
@@ -25,12 +28,12 @@ public abstract class RegistroServicio {
 		return tipoServicio;
 	}
 
-	public int consultarDniCliente() {
-		return dniCliente;
+	public Cliente consultarCliente() {
+		return cliente;
 	}
 
-	public int consultarNumEspecialista() {
-		return numEspecialista;
+	public Especialista consultarEspecialista() {
+		return especialista;
 	}
 
 	public Date consultarHoraInicio() {
